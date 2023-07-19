@@ -5,11 +5,11 @@ let fiveDayThree = document.getElementById('fiveDayThree');
 let fiveDayFour = document.getElementById('fiveDayFour');
 let fiveDayFive = document.getElementById('fiveDayFive');
 let date = dayjs().format('MMMM D, YYYY');
-let dateFiveDayOne = dayjs().add (1, 'day').format('M D, YYYY');
-let dateFiveDayTwo = dayjs().add (2, 'day').format('M D, YYYY');
-let dateFiveDayThree = dayjs().add (3, 'day').format('M D, YYYY');
-let dateFiveDayFour = dayjs().add (4, 'day').format('M D, YYYY');
-let dateFiveDayFive = dayjs().add (5, 'day').format('M D, YYYY');
+let dateFiveDayOne = dayjs().add (1, 'day').format('M/ D/YY');
+let dateFiveDayTwo = dayjs().add (2, 'day').format('M/ D/ YY');
+let dateFiveDayThree = dayjs().add (3, 'day').format('M/ D/ YY');
+let dateFiveDayFour = dayjs().add (4, 'day').format('M/ D/ YY');
+let dateFiveDayFive = dayjs().add (5, 'day').format('M/ D/ YY');
 
 
 function todaysWeather() {
@@ -39,10 +39,10 @@ iconUrl = "http://openweathermap.org/img/w/"+imgSrc + ".png";
 img.src = iconUrl
 
 displayBox.append(cityEl)
+displayBox.append(img)
 displayBox.append(temperature)
 displayBox.append(wind)
 displayBox.append(humidity)
-displayBox.append(img)
 
   });
 }
@@ -73,10 +73,11 @@ function fiveDayForecast() {
         img.src = iconUrl
         
         fiveDayOne.append(fiveDayDate)
+        fiveDayOne.append(img)
         fiveDayOne.append(temperature)
         fiveDayOne.append(wind)
         fiveDayOne.append(humidity)
-        fiveDayOne.append(img)
+       
       
 
         let fiveDayDateTwo = document.createElement('h5')
@@ -94,10 +95,11 @@ function fiveDayForecast() {
         imgTwo.src = iconUrlTwo
         
         fiveDayTwo.append(fiveDayDateTwo)
+        fiveDayTwo.append(imgTwo)
         fiveDayTwo.append(temperatureTwo)
         fiveDayTwo.append(windTwo)
         fiveDayTwo.append(humidityTwo)
-        fiveDayTwo.append(imgTwo)
+       
        
 
         let fiveDayDateThree = document.createElement('h5')
@@ -115,10 +117,10 @@ function fiveDayForecast() {
         imgThree.src = iconUrlThree
         
         fiveDayThree.append(fiveDayDateThree)
+        fiveDayThree.append(imgThree)
         fiveDayThree.append(temperatureThree)
         fiveDayThree.append(windThree)
         fiveDayThree.append(humidityThree)
-        fiveDayThree.append(imgThree)
 
         let fiveDayDateFour = document.createElement('h5')
         let temperatureFour = document.createElement('p')
@@ -135,10 +137,10 @@ function fiveDayForecast() {
         imgFour.src = iconUrlFour
         
         fiveDayFour.append(fiveDayDateFour)
+        fiveDayFour.append(imgFour)
         fiveDayFour.append(temperatureFour)
         fiveDayFour.append(windFour)
         fiveDayFour.append(humidityFour)
-        fiveDayFour.append(imgFour)
 
         let fiveDayDateFive = document.createElement('h5')
         let temperatureFive = document.createElement('p')
@@ -155,10 +157,10 @@ function fiveDayForecast() {
         imgFive.src = iconUrlFive
         
         fiveDayFive.append(fiveDayDateFive)
+        fiveDayFive.append(imgFive)
         fiveDayFive.append(temperatureFive)
         fiveDayFive.append(windFive)
         fiveDayFive.append(humidityFive)
-        fiveDayFive.append(imgFive)
 
 })
 }
