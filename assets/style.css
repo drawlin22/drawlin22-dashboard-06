@@ -1,0 +1,24 @@
+
+
+
+h1 {
+ text-align: center;
+ background-color: blue;
+}
+
+.display {
+    border: solid;
+}
+
+.card {
+    font-size: 8px;
+    color: white;
+    background-color: purple;
+    margin-right: 4px;
+    margin-top: 8px;
+    
+}
+
+.prior {
+    margin-right: 35px;
+}
