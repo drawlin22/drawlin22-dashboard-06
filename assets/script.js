@@ -66,7 +66,7 @@ function fiveDayForecast() {
         
         fiveDayDate.textContent = dateFiveDayOne
         temperature.textContent = " Temp " + data.list[0].main.temp + " ºF";
-        wind.textContent = "Wind Speed " + data.list[0].wind.speed + " MPH";
+        wind.textContent = "Wind " + data.list[0].wind.speed + " MPH";
         humidity.textContent = "Humidity " + data.list[0].main.humidity + " %";
         imgSrc = data.list[0].weather[0].icon
         iconUrl = "http://openweathermap.org/img/w/"+imgSrc + ".png";
@@ -87,7 +87,7 @@ function fiveDayForecast() {
 
         fiveDayDateTwo.textContent = dateFiveDayTwo
         temperatureTwo.textContent = " Temp " + data.list[6].main.temp + " ºF";
-        windTwo.textContent = "Wind Speed " + data.list[6].wind.speed + " MPH";
+        windTwo.textContent = "Wind " + data.list[6].wind.speed + " MPH";
         humidityTwo.textContent = "Humidity " + data.list[6].main.humidity + " %";
         imgSrcTwo = data.list[6].weather[0].icon
         iconUrlTwo = "http://openweathermap.org/img/w/"+imgSrcTwo + ".png";
@@ -108,7 +108,7 @@ function fiveDayForecast() {
 
         fiveDayDateThree.textContent = dateFiveDayThree
         temperatureThree.textContent = " Temp " + data.list[14].main.temp + " ºF";
-        windThree.textContent = "Wind Speed " + data.list[14].wind.speed + " MPH";
+        windThree.textContent = "Wind " + data.list[14].wind.speed + " MPH";
         humidityThree.textContent = "Humidity " + data.list[14].main.humidity + " %";
         imgSrcThree = data.list[14].weather[0].icon
         iconUrlThree = "http://openweathermap.org/img/w/"+imgSrcThree + ".png";
@@ -128,7 +128,7 @@ function fiveDayForecast() {
 
         fiveDayDateFour.textContent = dateFiveDayFour
         temperatureFour.textContent = " Temp " + data.list[22].main.temp + " ºF";
-        windFour.textContent = "Wind Speed " + data.list[22].wind.speed + " MPH";
+        windFour.textContent = "Wind " + data.list[22].wind.speed + " MPH";
         humidityFour.textContent = "Humidity " + data.list[22].main.humidity + " %";
         imgSrcFour = data.list[22].weather[0].icon
         iconUrlFour = "http://openweathermap.org/img/w/"+imgSrcFour + ".png";
@@ -148,7 +148,7 @@ function fiveDayForecast() {
 
         fiveDayDateFive.textContent = dateFiveDayFive
         temperatureFive.textContent = " Temp " + data.list[30].main.temp + " ºF";
-        windFive.textContent = "Wind Speed " + data.list[30].wind.speed + " MPH";
+        windFive.textContent = "Wind " + data.list[30].wind.speed + " MPH";
         humidityFive.textContent = "Humidity " + data.list[30].main.humidity + " %";
         imgSrcFive = data.list[30].weather[0].icon
         iconUrlFive = "http://openweathermap.org/img/w/"+imgSrcFive + ".png";
