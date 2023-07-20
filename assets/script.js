@@ -5,15 +5,18 @@ let fiveDayThree = document.getElementById('fiveDayThree');
 let fiveDayFour = document.getElementById('fiveDayFour');
 let fiveDayFive = document.getElementById('fiveDayFive');
 let date = dayjs().format('MMMM D, YYYY');
-let dateFiveDayOne = dayjs().add (1, 'day').format('M/ D/YY');
-let dateFiveDayTwo = dayjs().add (2, 'day').format('M/ D/ YY');
-let dateFiveDayThree = dayjs().add (3, 'day').format('M/ D/ YY');
-let dateFiveDayFour = dayjs().add (4, 'day').format('M/ D/ YY');
-let dateFiveDayFive = dayjs().add (5, 'day').format('M/ D/ YY');
+// let dateFiveDayOne = dayjs().add (1, 'day').format('M/ D/YY');
+// let dateFiveDayTwo = dayjs().add (2, 'day').format('M/ D/ YY');
+// let dateFiveDayThree = dayjs().add (3, 'day').format('M/ D/ YY');
+// let dateFiveDayFour = dayjs().add (4, 'day').format('M/ D/ YY');
+// let dateFiveDayFive = dayjs().add (5, 'day').format('M/ D/ YY');
 let cityInput = document.getElementById('input');
 let button = document.getElementById('button-addon1')
 let prior = document.getElementById('prior')
 let cityInputLocation = cityInput.value
+let town = document.querySelector(".town");
+
+console.log(cityInputLocation)
 
 function todaysWeather() {
 
@@ -104,23 +107,24 @@ button.addEventListener("click", function() {
   // saveSearch()
    todaysWeather()
    fiveDayForecast()
+   saveSearch()
 });
 
 function saveSearch() {
 let searchLocation = JSON.parse(localStorage.getItem("cityInputLocation")) || [];
-let town = document.getElementById("town");
+let place = document.getElementById('input').value;
+console.log(place)
+// {
+//   city: cityInputLocation
+// }
 
-let place = {
-  city: cityInputLocation
-}
+searchLocation.push(place);
 
-searchLocation.push(cityInputLocation);
-
-localStorage.setItem("city", JSON.stringify(place))
+localStorage.setItem("cityInputLocation", JSON.stringify(searchLocation))
 
 const searchButton = document.createElement("button");
 town.appendChild(searchButton)
-searchButton.textContent = cityInputLocation;
+searchButton.textContent = place;
 
 searchButton.addEventListener("click", function() {
   cityInputLocation = searchButton.value
