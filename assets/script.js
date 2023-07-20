@@ -1,25 +1,12 @@
 let displayBox = document.getElementById('displayBox');
-let fiveDayOne = document.getElementById('fiveDayOne');
-let fiveDayTwo = document.getElementById('fiveDayTwo');
-let fiveDayThree = document.getElementById('fiveDayThree');
-let fiveDayFour = document.getElementById('fiveDayFour');
-let fiveDayFive = document.getElementById('fiveDayFive');
 let date = dayjs().format('MMMM D, YYYY');
-// let dateFiveDayOne = dayjs().add (1, 'day').format('M/ D/YY');
-// let dateFiveDayTwo = dayjs().add (2, 'day').format('M/ D/ YY');
-// let dateFiveDayThree = dayjs().add (3, 'day').format('M/ D/ YY');
-// let dateFiveDayFour = dayjs().add (4, 'day').format('M/ D/ YY');
-// let dateFiveDayFive = dayjs().add (5, 'day').format('M/ D/ YY');
 let cityInput = document.getElementById('input');
 let button = document.getElementById('button-addon1')
 let prior = document.getElementById('prior')
 let cityInputLocation = cityInput.value
 let town = document.querySelector(".town");
 
-console.log(cityInputLocation)
-
 function todaysWeather() {
-
     cityInputLocation =cityInput.value.trim(); /* added */
     fetchUrl = "https://api.openweathermap.org/data/2.5/weather?q="+cityInputLocation+"&APPID=093ae3ae21bb27eb5d4488dfe5718811&units=imperial" /* added */
 
@@ -100,7 +87,6 @@ function fiveDayForecast() {
       })
     }
 
-
 button.addEventListener("click", function() {
   displayBox.textContent = "";
   prior.textContent = "";
@@ -113,10 +99,6 @@ button.addEventListener("click", function() {
 function saveSearch() {
 let searchLocation = JSON.parse(localStorage.getItem("cityInputLocation")) || [];
 let place = document.getElementById('input').value;
-console.log(place)
-// {
-//   city: cityInputLocation
-// }
 
 searchLocation.push(place);
 
