@@ -5,7 +5,7 @@
 
 h1 {
  text-align: center;
- background-color: blue;
+ background-color: blueviolet;
  font-size: 5rem;
 }
 
@@ -22,7 +22,15 @@ h5 {
 }
 
 p {
-    font-size: 2rem;
+    font-size: 1.5rem;
+}
+img {
+    width: 50px;
+    height: 50px;
+}
+
+.blankspace {
+    margin-right: 200px;
 }
 
 .display {
@@ -33,9 +41,14 @@ p {
     font-size: 7px;
     color: white;
     background-color: black;
-    margin-right: 4px;
+    margin-right: 21px;
     margin-top: 8px;
+    width: 150px;
     
+}
+
+.card-body {
+    width: 150px;
 }
 
 .form-control {

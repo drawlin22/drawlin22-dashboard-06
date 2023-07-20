@@ -10,13 +10,17 @@ let dateFiveDayTwo = dayjs().add (2, 'day').format('M/ D/ YY');
 let dateFiveDayThree = dayjs().add (3, 'day').format('M/ D/ YY');
 let dateFiveDayFour = dayjs().add (4, 'day').format('M/ D/ YY');
 let dateFiveDayFive = dayjs().add (5, 'day').format('M/ D/ YY');
-
+let cityInput = document.getElementById('input');
+let button = document.getElementById('button-addon1')
+let prior = document.getElementById('prior')
+let cityInputLocation = cityInput.value
 
 function todaysWeather() {
-fetch (
-    'https://api.openweathermap.org/data/2.5/weather?q=Modesto,CA,USA&APPID=093ae3ae21bb27eb5d4488dfe5718811&units=imperial'
-    )
 
+    cityInputLocation =cityInput.value.trim(); /* added */
+    fetchUrl = "https://api.openweathermap.org/data/2.5/weather?q="+cityInputLocation+"&APPID=093ae3ae21bb27eb5d4488dfe5718811&units=imperial" /* added */
+
+    fetch (fetchUrl)
 
 .then(function (response) {
     return response.json();
@@ -43,150 +47,94 @@ displayBox.append(img)
 displayBox.append(temperature)
 displayBox.append(wind)
 displayBox.append(humidity)
-
   });
 }
 
-
 function fiveDayForecast() {
-    fetch (
-        'https://api.openweathermap.org/data/2.5/forecast?q=Modesto,CA,USA&APPID=093ae3ae21bb27eb5d4488dfe5718811&units=imperial'
-        )
+  cityInputLocation =cityInput.value.trim(); /* added */
+  fetchUrl = "https://api.openweathermap.org/data/2.5/forecast?q="+cityInputLocation+"&APPID=093ae3ae21bb27eb5d4488dfe5718811&units=imperial" /* added */ 
+  
+  fetch (fetchUrl)
     
     .then(function (response) {
         return response.json();
       })
       .then(function (data) {
         console.log(data);
+
+        for (i=0; i < data.list.length; i++) {
+            if (data.list[i].dt_txt.substring(11,13) == "03"){
+                console.log(data.list[i])
+       
+
+        let cardSection = document.createElement('section')
+        cardSection.className = "col-1 card card-body"
+
         let fiveDayDate = document.createElement('h5')
         let temperature = document.createElement('p')
         let wind = document.createElement('p')
         let humidity = document.createElement('p')
         let img = document.createElement ('img')
-        
-        fiveDayDate.textContent = dateFiveDayOne
-        temperature.textContent = " Temp " + data.list[0].main.temp + " ºF";
-        wind.textContent = "Wind " + data.list[0].wind.speed + " MPH";
-        humidity.textContent = "Humidity " + data.list[0].main.humidity + " %";
-        imgSrc = data.list[0].weather[0].icon
+      
+        fiveDayDate.textContent = data.list[i].dt_txt.substring(0,10);
+        temperature.textContent = " Temp " + data.list[i].main.temp + " ºF";
+        wind.textContent = "Wind " + data.list[i].wind.speed + " MPH";
+        humidity.textContent = "Humidity " + data.list[i].main.humidity + " %";
+        imgSrc = data.list[i].weather[0].icon
         iconUrl = "http://openweathermap.org/img/w/"+imgSrc + ".png";
         img.src = iconUrl
         
-        fiveDayOne.append(fiveDayDate)
-        fiveDayOne.append(img)
-        fiveDayOne.append(temperature)
-        fiveDayOne.append(wind)
-        fiveDayOne.append(humidity)
-       
-      
+        cardSection.appendChild(fiveDayDate)
+        cardSection.appendChild(img)
+        cardSection.appendChild(temperature)
+        cardSection.appendChild(wind)
+        cardSection.appendChild(humidity)
 
-        let fiveDayDateTwo = document.createElement('h5')
-        let temperatureTwo = document.createElement('p')
-        let windTwo = document.createElement('p')
-        let humidityTwo = document.createElement('p')
-        let imgTwo = document.createElement('img')
+        prior.appendChild(cardSection)
 
-        fiveDayDateTwo.textContent = dateFiveDayTwo
-        temperatureTwo.textContent = " Temp " + data.list[6].main.temp + " ºF";
-        windTwo.textContent = "Wind " + data.list[6].wind.speed + " MPH";
-        humidityTwo.textContent = "Humidity " + data.list[6].main.humidity + " %";
-        imgSrcTwo = data.list[6].weather[0].icon
-        iconUrlTwo = "http://openweathermap.org/img/w/"+imgSrcTwo + ".png";
-        imgTwo.src = iconUrlTwo
-        
-        fiveDayTwo.append(fiveDayDateTwo)
-        fiveDayTwo.append(imgTwo)
-        fiveDayTwo.append(temperatureTwo)
-        fiveDayTwo.append(windTwo)
-        fiveDayTwo.append(humidityTwo)
-       
-       
-
-        let fiveDayDateThree = document.createElement('h5')
-        let temperatureThree = document.createElement('p')
-        let windThree = document.createElement('p')
-        let humidityThree = document.createElement('p')
-        let imgThree = document.createElement('img')
-
-        fiveDayDateThree.textContent = dateFiveDayThree
-        temperatureThree.textContent = " Temp " + data.list[14].main.temp + " ºF";
-        windThree.textContent = "Wind " + data.list[14].wind.speed + " MPH";
-        humidityThree.textContent = "Humidity " + data.list[14].main.humidity + " %";
-        imgSrcThree = data.list[14].weather[0].icon
-        iconUrlThree = "http://openweathermap.org/img/w/"+imgSrcThree + ".png";
-        imgThree.src = iconUrlThree
-        
-        fiveDayThree.append(fiveDayDateThree)
-        fiveDayThree.append(imgThree)
-        fiveDayThree.append(temperatureThree)
-        fiveDayThree.append(windThree)
-        fiveDayThree.append(humidityThree)
-
-        let fiveDayDateFour = document.createElement('h5')
-        let temperatureFour = document.createElement('p')
-        let windFour = document.createElement('p')
-        let humidityFour = document.createElement('p')
-        let imgFour = document.createElement('img')
-
-        fiveDayDateFour.textContent = dateFiveDayFour
-        temperatureFour.textContent = " Temp " + data.list[22].main.temp + " ºF";
-        windFour.textContent = "Wind " + data.list[22].wind.speed + " MPH";
-        humidityFour.textContent = "Humidity " + data.list[22].main.humidity + " %";
-        imgSrcFour = data.list[22].weather[0].icon
-        iconUrlFour = "http://openweathermap.org/img/w/"+imgSrcFour + ".png";
-        imgFour.src = iconUrlFour
-        
-        fiveDayFour.append(fiveDayDateFour)
-        fiveDayFour.append(imgFour)
-        fiveDayFour.append(temperatureFour)
-        fiveDayFour.append(windFour)
-        fiveDayFour.append(humidityFour)
-
-        let fiveDayDateFive = document.createElement('h5')
-        let temperatureFive = document.createElement('p')
-        let windFive = document.createElement('p')
-        let humidityFive = document.createElement('p')
-        let imgFive = document.createElement('img')
-
-        fiveDayDateFive.textContent = dateFiveDayFive
-        temperatureFive.textContent = " Temp " + data.list[30].main.temp + " ºF";
-        windFive.textContent = "Wind " + data.list[30].wind.speed + " MPH";
-        humidityFive.textContent = "Humidity " + data.list[30].main.humidity + " %";
-        imgSrcFive = data.list[30].weather[0].icon
-        iconUrlFive = "http://openweathermap.org/img/w/"+imgSrcFive + ".png";
-        imgFive.src = iconUrlFive
-        
-        fiveDayFive.append(fiveDayDateFive)
-        fiveDayFive.append(imgFive)
-        fiveDayFive.append(temperatureFive)
-        fiveDayFive.append(windFive)
-        fiveDayFive.append(humidityFive)
-
-})
-}
-
-let button = document.querySelector('#button-addon1')
-button.addEventListener("click", getWeather(), todaysWeather(), fiveDayForecast());
-
-function getWeather() {
-
-let enteredCity = document.getElementById('input')
-let locationEntered = enteredCity.value.trim();
-let apiFetch = "https://api.openweathermap.org/data/2.5/weather?q=" + locationEntered + "&APPID=093ae3ae21bb27eb5d4488dfe5718811&units=imperial"
-console.log(enteredCity);
-   
-fetch (
-        apiFetch
-        )
-    
-    .then(function (response) {
-        return response.json();
+            }
+        } 
       })
-      .then(function (data) {
-        console.log(data);
+    }
 
-})
+
+button.addEventListener("click", function() {
+  displayBox.textContent = "";
+  prior.textContent = "";
+  // saveSearch()
+   todaysWeather()
+   fiveDayForecast()
+});
+
+function saveSearch() {
+let searchLocation = JSON.parse(localStorage.getItem("cityInputLocation")) || [];
+let town = document.getElementById("town");
+
+let place = {
+  city: cityInputLocation
 }
+
+searchLocation.push(cityInputLocation);
+
+localStorage.setItem("city", JSON.stringify(place))
+
+const searchButton = document.createElement("button");
+town.appendChild(searchButton)
+searchButton.textContent = cityInputLocation;
+
+searchButton.addEventListener("click", function() {
+  cityInputLocation = searchButton.value
+
+  displayBox.textContent = "";
+  prior.textContent = "";
+   todaysWeather()
+   fiveDayForecast()
+})
+
+
+
+}
+
 
 
 
