@@ -90,7 +90,6 @@ function fiveDayForecast() {
 button.addEventListener("click", function() {
   displayBox.textContent = "";
   prior.textContent = "";
-  // saveSearch()
    todaysWeather()
    fiveDayForecast()
    saveSearch()
@@ -108,17 +107,14 @@ const searchButton = document.createElement("button");
 town.appendChild(searchButton)
 searchButton.textContent = place;
 
-searchButton.addEventListener("click", function() {
-  cityInputLocation = searchButton.value
+searchButton.addEventListener("click", function(event) {
+  cityInput.value = event.target.textContent
 
   displayBox.textContent = "";
   prior.textContent = "";
    todaysWeather()
    fiveDayForecast()
 })
-
-
-
 }
 
 
