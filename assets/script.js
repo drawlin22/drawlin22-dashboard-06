@@ -5,6 +5,8 @@ let button = document.getElementById('button-addon1')
 let prior = document.getElementById('prior')
 let cityInputLocation = cityInput.value
 let town = document.querySelector(".town");
+const searchButton = document.createElement("button");
+let place = document.getElementById('input').value;
 
 function todaysWeather() {
     cityInputLocation =cityInput.value.trim(); /* added */
@@ -95,6 +97,18 @@ button.addEventListener("click", function() {
    saveSearch()
 });
 
+cityInput.addEventListener("keydown", function(event) {
+  if(event.key ==='Enter'){
+    event.preventDefault()
+    displayBox.textContent = "";
+    prior.textContent = "";
+     todaysWeather()
+     fiveDayForecast()
+     saveSearch()
+  } 
+
+});
+
 function saveSearch() {
 let searchLocation = JSON.parse(localStorage.getItem("cityInputLocation")) || [];
 let place = document.getElementById('input').value;
@@ -117,6 +131,28 @@ searchButton.addEventListener("click", function(event) {
 })
 }
 
+function callBackCity() {
+  let searchLocation = JSON.parse(localStorage.getItem("cityInputLocation"));
+  if(Array.isArray(searchLocation)&& searchLocation.length >0) {
+
+    for(i=0; i< searchLocation.length; i++){
+      const searchButton = document.createElement("button");
+town.appendChild(searchButton)
+searchButton.textContent = searchLocation[i];
+    }
+}
+    searchButton.addEventListener("click", function(event) {
+      cityInput.value = event.target.textContent
+    
+  displayBox.textContent = "";
+  prior.textContent = "";
+   todaysWeather()
+   fiveDayForecast()
+  })
+}
+
+
+callBackCity()
 
 
 
