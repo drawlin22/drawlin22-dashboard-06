@@ -139,16 +139,17 @@ function callBackCity() {
       const searchButton = document.createElement("button");
 town.appendChild(searchButton)
 searchButton.textContent = searchLocation[i];
-    }
+searchButton.addEventListener("click", function(event) {
+  cityInput.value = event.target.textContent
+
+displayBox.textContent = "";
+prior.textContent = "";
+todaysWeather()
+fiveDayForecast()
+})
 }
-    searchButton.addEventListener("click", function(event) {
-      cityInput.value = event.target.textContent
-    
-  displayBox.textContent = "";
-  prior.textContent = "";
-   todaysWeather()
-   fiveDayForecast()
-  })
+}
+  
 }
 
 
